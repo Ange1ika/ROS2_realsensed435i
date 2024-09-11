@@ -2,4 +2,4 @@
 
 xhost +local:root
 
-docker build --no-cache -t ros2-realsense:humble .
+sudo docker build --no-cache -t ros2-realsense:humble .

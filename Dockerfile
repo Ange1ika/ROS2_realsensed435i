@@ -28,6 +28,14 @@ RUN apt-get update \
 RUN apt-get update \
  && apt-get install -y \
     ros-${ROS_DISTRO}-rviz2 \
+    ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
+    vim \
  && rm -rf /var/lib/apt/lists/*
 
 ARG DEBIAN_FRONTEND=dialog
+
+RUN mkdir -p /root/.dds/log
+COPY entrypoint.sh /root
+COPY cyclonedds_config.xml /root/cyclonedds_config.xml
+ENTRYPOINT ["bash", "/root/entrypoint.sh"]
+
